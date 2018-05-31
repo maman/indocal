@@ -6,9 +6,17 @@
   "author": "Achmad Mahardi <achmad@mahardi.me>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "postinstall": "yarn flow-typed-install",
+    "flow": "flow",
+    "flow-typed-install": "flow-typed install -s -o --ignoreDeps peer dev"
+  },
   "dependencies": {
     "@indocal/string-utils": "*",
-    "express": "^4.16.3"
+    "apollo-server-express": "^1.3.6",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2"
   },
   "devDependencies": {
     "cross-env": "^5.1.6",

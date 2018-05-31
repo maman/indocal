@@ -1,0 +1,8 @@
+{
+  "name": "@indocal/app-state",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Achmad Mahardi <achmad@mahardi.me>",
+  "license": "MIT",
+  "private": true
+}

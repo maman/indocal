@@ -6,21 +6,32 @@
   "author": "Achmad Mahardi <achmad@mahardi.me>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "postinstall": "yarn flow-typed-install",
+    "flow": "flow",
+    "flow-typed-install": "flow-typed install -s -o --ignoreDeps peer dev"
+  },
   "dependencies": {
     "apollo-client": "^2.3.2",
+    "dotenv": "^5.0.1",
     "graphql": "^0.13.2",
-    "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "react-loadable": "^5.4.0",
-    "react-native": "0.53.3"
+    "prop-types": "^15.6.1",
+    "react": "16.3.1",
+    "react-dom": "16.3.1",
+    "react-native": "0.55.4",
+    "react-loadable": "^5.4.0"
   },
   "devDependencies": {
     "babel-core": "6",
+    "babel-jest": "23.0.1",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-react-native": "4.0.0",
     "cross-env": "^5.1.6",
     "flow-bin": "^0.73.0",
     "flow-typed": "^2.4.0",
+    "jest": "23.1.0",
+    "react-test-renderer": "16.3.1",
     "webpack": "^4.10.2"
   }
 }
