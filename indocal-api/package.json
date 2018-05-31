@@ -1,0 +1,18 @@
+{
+  "name": "@indocal/api",
+  "version": "1.0.0",
+  "description": "Indocal Graphql API",
+  "main": "index.js",
+  "author": "Achmad Mahardi <achmad@mahardi.me>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@indocal/string-utils": "*",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.6",
+    "flow-bin": "^0.73.0",
+    "flow-typed": "^2.4.0"
+  }
+}

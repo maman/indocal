@@ -1,0 +1,12 @@
+{
+  "name": "indocal",
+  "private": true,
+  "workspaces": [
+    "indocal-api",
+    "indocal-client",
+    "shared-libs/*"
+  ],
+  "devDependencies": {
+    "husky": "^0.14.3"
+  }
+}

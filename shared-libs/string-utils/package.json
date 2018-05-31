@@ -1,0 +1,8 @@
+{
+  "name": "@indocal/string-utils",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Achmad Mahardi",
+  "license": "MIT",
+  "private": true
+}

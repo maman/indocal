@@ -1,0 +1,26 @@
+{
+  "name": "@indocal/client",
+  "version": "1.0.0",
+  "description": "Indocal isomorphic client",
+  "main": "index.js",
+  "author": "Achmad Mahardi <achmad@mahardi.me>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "apollo-client": "^2.3.2",
+    "graphql": "^0.13.2",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-loadable": "^5.4.0",
+    "react-native": "0.53.3"
+  },
+  "devDependencies": {
+    "babel-core": "6",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.1.6",
+    "flow-bin": "^0.73.0",
+    "flow-typed": "^2.4.0",
+    "webpack": "^4.10.2"
+  }
+}
