@@ -1,48 +1,61 @@
 {
+  "presets": ["flow"],
+  "plugins": ["transform-class-properties", "transform-object-rest-spread"],
   "env": {
     "development": {
-      "plugins": [
-        [
-          "./utils/babel-plugin-rewrite-react",
-          {
-            "mode": "native"
-          }
-        ]
-      ],
       "presets": ["react-native"]
     },
     "production": {
-      "plugins": [
-        [
-          "./utils/babel-plugin-rewrite-react",
-          {
-            "mode": "native"
-          }
-        ]
-      ],
       "presets": ["react-native"]
     },
     "web:dev": {
       "plugins": [
-        [
-          "./utils/babel-plugin-rewrite-react",
-          {
-            "mode": "web"
-          }
-        ]
+        "universal-import",
+        "react-native-web",
+        "transform-react-jsx-source",
+        "transform-react-jsx-self",
+        "react-hot-loader/babel"
       ],
-      "presets": ["react"]
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current",
+              "browsers": ["last 2 versions", "safari >= 7"]
+            }
+          }
+        ],
+        "react"
+      ]
     },
     "web:prod": {
       "plugins": [
+        "universal-import",
+        "react-native-web",
+        "transform-react-constant-elements",
+        "transform-react-inline-elements",
+        "transform-react-display-name",
+        "minify-simplify",
         [
-          "./utils/babel-plugin-rewrite-react",
+          "minify-dead-code-elimination",
           {
-            "mode": "web"
+            "optimizeRawSize": true
           }
         ]
       ],
-      "presets": ["react"]
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current",
+              "browsers": ["last 2 versions", "safari >= 7"]
+            }
+          }
+        ],
+        "react"
+      ]
     }
   }
 }

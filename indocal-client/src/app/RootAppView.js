@@ -1,6 +1,12 @@
-/**
- * TODO:
- *
- * Define root app component that includes providers-only component.
- * Will be rendered by startClientApp/index.native.js
- */
+// @flow
+
+import React, {Component} from 'react';
+import {Text} from 'react-native';
+
+type Props = {};
+
+export default class RootAppView extends Component<Props> {
+  render() {
+    return <Text>Hello World!</Text>;
+  }
+}
