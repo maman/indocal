@@ -174,4 +174,4 @@ buck-out/
 # End of https://www.gitignore.io/api/node,osx,windows,linux
 
 ## Additional ignores
-flow-typed
+
