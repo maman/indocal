@@ -8,18 +8,39 @@
   "private": true,
   "scripts": {
     "postinstall": "yarn flow-typed-install",
+    "develop": "yarn develop:web",
+    "develop:web": "yarn start",
+    "develop:rn": "yarn develop:rn:android",
+    "develop:rn:android": "react-native run-android",
+    "develop:rn:ios": "react-native run-ios",
+    "build:web": "BABEL_ENV=web:prod echo \"Not defined yet\"",
+    "build:rn": "yarn build:rn:android",
+    "build:rn:bundle": "yarn build:rn:bundle:android",
+    "build:rn:bundle:android": "react-native bundle --platform android --entry-file index.js --bundle-output dist/android.bundle.js --sourcemap-output dist/android.bundle.map --reset-cache",
+    "build:rn:bundle:ios": "react-native bundle --platform ios --entry-file index.js --bundle-output dist/ios.bundle.js --sourcemap-output dist/ios.bundle.map --reset-cache",
+    "build:rn:android": "echo \"Not defined yet\"",
+    "build:rn:ios": "echo \"Not defined yet\"",
+    "start": "cross-env BABEL_ENV=web:dev node server.js",
+    "build": "yarn build:web",
     "flow": "flow",
     "flow-typed-install": "flow-typed install -s -o --ignoreDeps peer dev"
   },
   "dependencies": {
     "apollo-client": "^2.3.2",
     "dotenv": "^5.0.1",
+    "express": "^4.16.3",
     "graphql": "^0.13.2",
+    "history": "^4.7.2",
     "prop-types": "^15.6.1",
     "react": "16.3.1",
     "react-dom": "16.3.1",
     "react-native": "0.55.4",
-    "react-loadable": "^5.4.0"
+    "react-native-code-push": "^5.3.4",
+    "react-redux": "^5.0.7",
+    "react-universal-component": "^2.9.0",
+    "redux": "^4.0.0",
+    "redux-first-router": "^0.0.16-next",
+    "redux-first-router-link": "^1.4.2"
   },
   "devDependencies": {
     "babel-core": "6",
@@ -32,6 +53,7 @@
     "flow-typed": "^2.4.0",
     "jest": "23.1.0",
     "react-test-renderer": "16.3.1",
-    "webpack": "^4.10.2"
+    "webpack": "^4.10.2",
+    "webpack-flush-chunks": "^1.2.3"
   }
 }

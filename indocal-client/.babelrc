@@ -1,3 +1,48 @@
 {
-  "presets": ["react-native"]
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "./utils/babel-plugin-rewrite-react",
+          {
+            "mode": "native"
+          }
+        ]
+      ],
+      "presets": ["react-native"]
+    },
+    "production": {
+      "plugins": [
+        [
+          "./utils/babel-plugin-rewrite-react",
+          {
+            "mode": "native"
+          }
+        ]
+      ],
+      "presets": ["react-native"]
+    },
+    "web:dev": {
+      "plugins": [
+        [
+          "./utils/babel-plugin-rewrite-react",
+          {
+            "mode": "web"
+          }
+        ]
+      ],
+      "presets": ["react"]
+    },
+    "web:prod": {
+      "plugins": [
+        [
+          "./utils/babel-plugin-rewrite-react",
+          {
+            "mode": "web"
+          }
+        ]
+      ],
+      "presets": ["react"]
+    }
+  }
 }
