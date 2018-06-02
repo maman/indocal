@@ -31,7 +31,10 @@ type AssetType = {
 export function getVendorChunkName(assets: AssetType[]): string {
   return assets
     .filter(asset => asset.name.includes('dll'))
-    .reduce((curr: string, prev) => (curr = prev.name), '');
+    .reduce(
+      (curr: string, prev: ?string) => (curr = prev.name.replace('.gz', '')),
+      ''
+    );
 }
 
 export function getRandomValues(min: number, max: number): number {

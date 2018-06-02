@@ -6,6 +6,7 @@ import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import AutoDllPlugin from 'autodll-webpack-plugin';
 import ErrorOverlayPlugin from 'error-overlay-webpack-plugin';
+import CompressionWebpackPlugin from 'compression-webpack-plugin';
 
 import {resolve, webpackExternals} from './utils/toolbelt';
 
@@ -126,6 +127,10 @@ function generatePluginSets(isServer: boolean, isProd: boolean) {
           ...autoDllConfig,
           filename: '[name].[hash].dll.js',
           plugins: [new UglifyJsPlugin(uglifyOptions)],
+        }),
+        new CompressionWebpackPlugin({
+          asset: '[path].gz[query]',
+          algorithm: 'gzip',
         }),
         new webpack.HashedModuleIdsPlugin(),
       ];

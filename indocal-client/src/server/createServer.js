@@ -6,6 +6,7 @@ import express from 'express';
 import helmet from 'helmet';
 import noFavicon from 'express-no-favicons';
 import bodyParser from 'body-parser';
+import gzipStatic from 'connect-gzip-static';
 
 import typeof Env from '../utils/env';
 import typeof Logger from '../utils/logger';
@@ -92,7 +93,7 @@ export default function createServer(
         const serverRender = require('./main').default;
         server.use(
           appSettings.publicPath,
-          express.static(path.join(process.cwd(), 'dist/client'))
+          gzipStatic(path.join(process.cwd(), 'dist/client'))
         );
         server.use(
           serverRender({
