@@ -26,8 +26,6 @@
       "plugins": [
         "universal-import",
         "react-native-web",
-        "transform-react-constant-elements",
-        "transform-react-inline-elements",
         "transform-react-display-name",
         "minify-simplify",
         [
