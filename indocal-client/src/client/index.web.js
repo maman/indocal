@@ -1,7 +1,10 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
-import startJsApp from './startJsApp';
+import startWebApp from './startWebApp';
 
 const history = createHistory();
 
-ReactDOM.hydrate(startJsApp(history), document.getElementById('html'));
+const {HMRApp} = startWebApp(history);
+
+ReactDOM.hydrate(<HMRApp />, document.getElementById('html'));

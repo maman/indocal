@@ -8,11 +8,19 @@ type Props = {
   scripts: string[],
   stylesheets: string[],
   markup: string,
+  styleElement: string,
 };
 
 export default class HTML extends Component<Props> {
   render() {
-    const {assetPath, initialState, scripts, stylesheets, markup} = this.props;
+    const {
+      assetPath,
+      initialState,
+      scripts,
+      stylesheets,
+      markup,
+      styleElement,
+    } = this.props;
     return (
       <html>
         <head>
@@ -22,6 +30,7 @@ export default class HTML extends Component<Props> {
             name="viewport"
             content="width=device-width,initial-scale=1.0"
           />
+          {styleElement}
           {stylesheets.map((stylesheet: string, i: number) => (
             <link
               href={`${assetPath}/${stylesheet}`}
