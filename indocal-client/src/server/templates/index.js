@@ -38,6 +38,7 @@ export default class HTML extends Component<Props> {
               )}`,
             }}
           />
+          <noscript>Server-rendered:</noscript>
           <div id="html" dangerouslySetInnerHTML={{__html: markup}} />
           {scripts.map((script: string, i: number) => (
             <script src={`${assetPath}/${script}`} key={i} />

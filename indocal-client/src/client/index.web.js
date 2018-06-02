@@ -1,12 +1,7 @@
-import {AppRegistry} from 'react-native-web';
+import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import startJsApp from './startJsApp';
 
 const history = createHistory();
 
-const Indocal = startJsApp(history);
-
-AppRegistry.registerComponent('indocal', () => Indocal);
-AppRegistry.runApplication('indocal', {
-  rootTag: document.getElementById('html'),
-});
+ReactDOM.hydrate(startJsApp(history), document.getElementById('html'));

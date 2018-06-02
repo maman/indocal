@@ -9,7 +9,7 @@
   "scripts": {
     "postinstall": "yarn flow-typed-install && yarn __PATCH_RNW_DANGEROUSLY",
     "develop": "yarn develop:web",
-    "develop:web": "yarn start",
+    "develop:web": "cross-env BABEL_ENV=web:dev node server.js",
     "develop:rn": "yarn develop:rn:android",
     "develop:rn:android": "react-native run-android",
     "develop:rn:ios": "react-native run-ios",
@@ -24,7 +24,7 @@
     "build:rn:android": "echo \"Not defined yet\"",
     "build:rn:ios": "echo \"Not defined yet\"",
     "prestart": "yarn prebuild",
-    "start": "cross-env BABEL_ENV=web:dev node server.js",
+    "start": "node dist/server.js",
     "prebuild": "node scripts/deleteBuilds.js",
     "build": "yarn build:web",
     "flow": "flow",
