@@ -7,6 +7,6 @@ type Props = {};
 
 export default class RootAppView extends Component<Props> {
   render() {
-    return <Text>Hello World!</Text>;
+    return <Text>Hello Worlds!</Text>;
   }
 }

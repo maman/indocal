@@ -46,11 +46,12 @@ export default function createServer(
   return {
     start(port: number): void {
       if (!isProd) {
+        const chokidar = require('chokidar');
         const webpack = require('webpack');
         const webpackDevMiddleware = require('webpack-dev-middleware');
         const webpackHotMiddleware = require('webpack-hot-middleware');
         const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
-        const createWebpackConfig = require('../../scripts/createWebpackConfig');
+        const createWebpackConfig = require('../createWebpackConfig');
         const clientConfig = createWebpackConfig(false, isProd);
         const serverConfig = createWebpackConfig(true, isProd);
         const multiCompiler = webpack([clientConfig, serverConfig]);
@@ -69,8 +70,6 @@ export default function createServer(
             serverRendererOptions: {outputPath: clientConfig.output.path},
           })
         );
-
-        const chokidar = require('chokidar');
 
         chokidar
           .watch('./src/server', {

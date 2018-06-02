@@ -1,25 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import {AppRegistry} from 'react-native-web';
 import createHistory from 'history/createBrowserHistory';
-import {AppContainer} from 'react-hot-loader';
-import RootAppView from '../app/RootAppView';
+import startJsApp from './startJsApp';
 
 const history = createHistory();
 
-function startJsApp(App) {
-  return ReactDOM.hydrate(
-    <AppContainer>
-      <App history={history} />
-    </AppContainer>,
-    document.getElementById('html')
-  );
-}
+const Indocal = startJsApp(history);
 
-if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('../app/RootAppView.js', () => {
-    const App = require('../app/RootAppView').default;
-    startJsApp(App);
-  });
-}
-
-startJsApp(RootAppView);
+AppRegistry.registerComponent('indocal', () => Indocal);
+AppRegistry.runApplication('indocal', {
+  rootTag: document.getElementById('html'),
+});

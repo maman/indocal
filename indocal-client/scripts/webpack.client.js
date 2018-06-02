@@ -1,3 +1,3 @@
 require('babel-register');
-const createWebpackConfig = require('./createWebpackConfig');
+const createWebpackConfig = require('../src/createWebpackConfig');
 module.exports = createWebpackConfig(false, true);

@@ -10,6 +10,9 @@
     "prettier.trailingComma": "es5",
     "prettier.bracketSpacing": false,
     "prettier.jsxBracketSameLine": true,
-    "prettier.printWidth": 80
+    "prettier.printWidth": 80,
+    "typescript.validate.enable": false,
+    "javascript.validate.enable": false,
+    "flow.useNPMPackagedFlow": true
   }
 }

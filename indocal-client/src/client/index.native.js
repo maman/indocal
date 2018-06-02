@@ -3,12 +3,7 @@
 import React, {Component} from 'react';
 import {SafeAreaView, View, Text, Platform} from 'react-native';
 import RootAppView from '../app/RootAppView';
-
-const IS_WEB = Platform.OS === 'web';
-
-/** UNSAFE */
-let codePush;
-if (!IS_WEB) codePush = require('react-native-code-push');
+import codePush from 'react-native-code-push';
 
 class Indocal extends Component {
   render() {
@@ -22,4 +17,4 @@ class Indocal extends Component {
   }
 }
 
-export default (IS_WEB ? Indocal : codePush(Indocal));
+export default codePush(Indocal);

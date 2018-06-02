@@ -5,8 +5,8 @@ import {flushChunkNames} from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 
 import Html from './templates';
-import RootAppView from '../app/RootAppView';
-import {getVendorChunkName} from '../../scripts/toolbelt';
+import startJsApp from '../client/startJsApp';
+import {getVendorChunkName} from '../utils/toolbelt';
 
 function renderTemplate(page: string) {
   return `<!doctype html>${page}`;
@@ -20,7 +20,7 @@ export default function renderApp({clientStats}) {
       chunkNames,
     });
     const vendorChunkName = getVendorChunkName(clientStats.assets);
-    const markup = ReactDOM.renderToString(<RootAppView history={history} />);
+    const markup = ReactDOM.renderToString(startJsApp(history));
     const page = ReactDOM.renderToString(
       <Html
         assetPath={publicPath}

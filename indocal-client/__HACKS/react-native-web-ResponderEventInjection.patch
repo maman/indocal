@@ -1,0 +1,18 @@
+--- ./node_modules/react-native-web/dist/exports/createElement/index.js	2018-06-02 21:00:55.000000000 +0700
++++ /tmp/index.js	2018-06-02 21:03:03.000000000 +0700
+@@ -16,10 +16,11 @@
+
+ var EventPluginHub = ReactDOM.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.EventPluginHub;
+
+-
+-EventPluginHub.injection.injectEventPluginsByName({
+-  ResponderEventPlugin: ResponderEventPlugin
+-});
++try{
++  EventPluginHub.injection.injectEventPluginsByName({
++    ResponderEventPlugin: ResponderEventPlugin
++  });
++}catch(e){}
+
+ /**
+  * Ensure event handlers receive an event of the expected shape. The 'button'

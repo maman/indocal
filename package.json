@@ -8,12 +8,20 @@
       "shared-libs/*"
     ],
     "nohoist": [
+      "**/react/**",
+      "**/react",
+      "**/react-dom/**",
+      "**/react-dom",
       "**/react-native/**",
       "**/react-native",
       "**/react-native-scripts",
       "**/react-native-scripts/**",
+      "**/react-native-web/**",
+      "**/react-native-web",
       "**/react-native-code-push/**",
-      "**/react-native-code-push"
+      "**/react-native-code-push",
+      "**/autodll-webpack-plugin/**",
+      "**/autodll-webpack-plugin"
     ]
   },
   "devDependencies": {

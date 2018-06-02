@@ -1,20 +1,14 @@
 {
-  "presets": ["flow"],
+  "presets": ["flow", "react-native"],
   "plugins": ["transform-class-properties", "transform-object-rest-spread"],
   "env": {
-    "development": {
-      "presets": ["react-native"]
-    },
-    "production": {
-      "presets": ["react-native"]
-    },
     "web:dev": {
       "plugins": [
+        "react-hot-loader/babel",
         "universal-import",
         "react-native-web",
         "transform-react-jsx-source",
-        "transform-react-jsx-self",
-        "react-hot-loader/babel"
+        "transform-react-jsx-self"
       ],
       "presets": [
         [
@@ -25,8 +19,7 @@
               "browsers": ["last 2 versions", "safari >= 7"]
             }
           }
-        ],
-        "react"
+        ]
       ]
     },
     "web:prod": {
@@ -53,8 +46,7 @@
               "browsers": ["last 2 versions", "safari >= 7"]
             }
           }
-        ],
-        "react"
+        ]
       ]
     }
   }

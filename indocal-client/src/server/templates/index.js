@@ -25,7 +25,7 @@ export default class HTML extends Component<Props> {
           {stylesheets.map((stylesheet: string, i: number) => (
             <link
               href={`${assetPath}/${stylesheet}`}
-              rel="stylesheet"
+              rel="stylesheets"
               key={i}
             />
           ))}

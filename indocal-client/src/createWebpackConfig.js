@@ -2,11 +2,12 @@
 
 import webpack from 'webpack';
 import StatsPlugin from 'stats-webpack-plugin';
+import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import AutoDllPlugin from 'autodll-webpack-plugin';
 import ErrorOverlayPlugin from 'error-overlay-webpack-plugin';
 
-import {resolve, webpackExternals} from './toolbelt';
+import {resolve, webpackExternals} from './utils/toolbelt';
 
 const NODE_MODULES = resolve('node_modules');
 
@@ -21,7 +22,6 @@ function generateEntryConfig(isServer: boolean, isProd: boolean) {
       entry = [
         'babel-polyfill',
         'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
-        'react-hot-loader/patch',
         resolve('src/client/index.web.js'),
       ];
     }
@@ -70,6 +70,7 @@ function generatePluginSets(isServer: boolean, isProd: boolean) {
     },
   };
   let plugins = [
+    new ExtractCssChunks(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(isProd ? 'production' : 'development'),
@@ -183,6 +184,18 @@ module.exports = function createWebpackConfig(
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ExtractCssChunks.extract({
+          use: {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]',
+            },
+          },
+        }),
       },
     ],
   };
