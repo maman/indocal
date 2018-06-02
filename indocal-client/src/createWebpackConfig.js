@@ -2,11 +2,11 @@
 
 import webpack from 'webpack';
 import StatsPlugin from 'stats-webpack-plugin';
-import ExtractCssChunks from 'extract-css-chunks-webpack-plugin';
 import WriteFilePlugin from 'write-file-webpack-plugin';
 import AutoDllPlugin from 'autodll-webpack-plugin';
 import ErrorOverlayPlugin from 'error-overlay-webpack-plugin';
 import CompressionWebpackPlugin from 'compression-webpack-plugin';
+import Visualizer from 'webpack-visualizer-plugin';
 
 import {resolve, webpackExternals} from './utils/toolbelt';
 
@@ -60,6 +60,7 @@ function generatePluginSets(isServer: boolean, isProd: boolean) {
       vendor: [
         'react',
         'react-dom',
+        'react-native-web',
         'react-redux',
         'redux',
         'apollo-client',
@@ -67,11 +68,11 @@ function generatePluginSets(isServer: boolean, isProd: boolean) {
         'redux-first-router',
         'redux-first-router-link',
         'redux-devtools-extension/logOnlyInProduction',
+        'whatwg-fetch',
       ],
     },
   };
   let plugins = [
-    new ExtractCssChunks(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(isProd ? 'production' : 'development'),
@@ -108,32 +109,35 @@ function generatePluginSets(isServer: boolean, isProd: boolean) {
         new webpack.NoEmitOnErrorsPlugin(),
       ];
     } else {
-      const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-      const uglifyOptions = {
-        cache: false,
-        parallel: true,
-        sourceMap: true,
-        uglifyOptions: {
-          compress: true,
-          mangle: true,
-          ie8: false,
-        },
-      };
-      plugins = [
-        new StatsPlugin('stats.json'),
-        ...plugins,
-        new UglifyJsPlugin(uglifyOptions),
-        new AutoDllPlugin({
-          ...autoDllConfig,
-          filename: '[name].[hash].dll.js',
-          plugins: [new UglifyJsPlugin(uglifyOptions)],
-        }),
-        new CompressionWebpackPlugin({
-          asset: '[path].gz[query]',
-          algorithm: 'gzip',
-        }),
-        new webpack.HashedModuleIdsPlugin(),
-      ];
+      if (!isServer) {
+        const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+        const uglifyOptions = {
+          cache: false,
+          parallel: true,
+          sourceMap: true,
+          uglifyOptions: {
+            compress: true,
+            mangle: true,
+            ie8: false,
+          },
+        };
+        plugins = [
+          new Visualizer(),
+          new StatsPlugin('stats.json'),
+          ...plugins,
+          new UglifyJsPlugin(uglifyOptions),
+          new AutoDllPlugin({
+            ...autoDllConfig,
+            filename: '[name].[hash].dll.js',
+            plugins: [new UglifyJsPlugin(uglifyOptions)],
+          }),
+          new CompressionWebpackPlugin({
+            asset: '[path].gz[query]',
+            algorithm: 'gzip',
+          }),
+          new webpack.HashedModuleIdsPlugin(),
+        ];
+      }
     }
   }
   return plugins;
@@ -175,7 +179,7 @@ module.exports = function createWebpackConfig(
 ): WebpackConfigType {
   const name = isServer ? 'server' : 'client';
   const target = isServer ? 'node' : 'web';
-  const devtool = isProd ? 'source-map' : 'cheap-module-eval-source-map';
+  const devtool = isProd ? 'source-map' : 'eval-source-map';
   const config = {};
   config.name = name;
   config.target = target;
@@ -189,18 +193,6 @@ module.exports = function createWebpackConfig(
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader',
-      },
-      {
-        test: /\.css$/,
-        use: ExtractCssChunks.extract({
-          use: {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]__[local]--[hash:base64:5]',
-            },
-          },
-        }),
       },
     ],
   };

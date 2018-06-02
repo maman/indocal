@@ -17,7 +17,7 @@
     "build:web": "yarn build:web:client && yarn build:web:server && yarn build:web:node",
     "build:web:client": "cross-env BABEL_ENV=web:prod NODE_ENV=production webpack --progress -p --config scripts/webpack.client.js",
     "build:web:server": "cross-env BABEL_ENV=web:prod NODE_ENV=production webpack --progress -p --config scripts/webpack.server.js",
-    "build:web:node": "cross-env BABEL_ENV=web:prod NODE_ENV=production babel src -d dist",
+    "build:web:node": "cross-env BABEL_ENV=web:prod NODE_ENV=production babel src -d dist ",
     "build:rn": "yarn build:rn:android",
     "build:rn:bundle": "yarn build:rn:bundle:android",
     "build:rn:bundle:android": "react-native bundle --platform android --entry-file index.js --bundle-output dist/android.bundle.js --sourcemap-output dist/android.bundle.map --reset-cache",
@@ -87,7 +87,6 @@
     "cross-env": "^5.1.6",
     "css-loader": "^0.28.11",
     "error-overlay-webpack-plugin": "^0.1.5",
-    "extract-css-chunks-webpack-plugin": "^2.0.19",
     "flow-bin": "^0.73.0",
     "flow-typed": "^2.4.0",
     "jest": "23.1.0",
@@ -101,6 +100,7 @@
     "webpack-flush-chunks": "^1.2.3",
     "webpack-hot-middleware": "^2.22.2",
     "webpack-hot-server-middleware": "^0.5.0",
+    "webpack-visualizer-plugin": "^0.1.11",
     "write-file-webpack-plugin": "^4.3.2"
   }
 }
