@@ -8,6 +8,7 @@
   "private": true,
   "scripts": {
     "postinstall": "yarn flow-typed-install && yarn __PATCH_RNW_DANGEROUSLY",
+    "predevelop": "yarn prebuild",
     "develop": "yarn develop:web",
     "develop:web": "cross-env BABEL_ENV=web:dev node server.js",
     "develop:rn": "yarn develop:rn:android",
@@ -23,8 +24,7 @@
     "build:rn:bundle:ios": "react-native bundle --platform ios --entry-file index.js --bundle-output dist/ios.bundle.js --sourcemap-output dist/ios.bundle.map --reset-cache",
     "build:rn:android": "echo \"Not defined yet\"",
     "build:rn:ios": "echo \"Not defined yet\"",
-    "prestart": "yarn prebuild",
-    "start": "node dist/server.js",
+    "start": "node server.js",
     "prebuild": "node scripts/deleteBuilds.js",
     "build": "yarn build:web",
     "flow": "flow",
