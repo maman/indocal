@@ -8,6 +8,8 @@
       "shared-libs/*"
     ],
     "nohoist": [
+      "**/history/**",
+      "**/history",
       "**/react/**",
       "**/react",
       "**/react-dom/**",
@@ -20,6 +22,18 @@
       "**/react-native-web",
       "**/react-native-code-push/**",
       "**/react-native-code-push",
+      "**/react-universal-component/**",
+      "**/react-universal-component",
+      "**/redux/**",
+      "**/redux",
+      "**/react-redux/**",
+      "**/react-redux",
+      "**/redux-first-router/**",
+      "**/redux-first-router",
+      "**/redux-first-router-link/**",
+      "**/redux-first-router-link",
+      "**/redux-devtools-extension/**",
+      "**/redux-devtools-extension",
       "**/autodll-webpack-plugin/**",
       "**/autodll-webpack-plugin"
     ]

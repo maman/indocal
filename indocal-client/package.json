@@ -8,15 +8,14 @@
   "private": true,
   "scripts": {
     "postinstall": "yarn flow-typed-install && yarn __PATCH_RNW_DANGEROUSLY",
-    "predevelop": "yarn prebuild",
     "develop": "yarn develop:web",
     "develop:web": "cross-env BABEL_ENV=web:dev node server.js",
     "develop:rn": "yarn develop:rn:android",
     "develop:rn:android": "react-native run-android",
     "develop:rn:ios": "react-native run-ios",
     "build:web": "yarn build:web:client && yarn build:web:server && yarn build:web:node",
-    "build:web:client": "cross-env BABEL_ENV=web:prod NODE_ENV=production webpack --progress -p --config scripts/webpack.client.js",
-    "build:web:server": "cross-env BABEL_ENV=web:prod NODE_ENV=production webpack --progress -p --config scripts/webpack.server.js",
+    "build:web:client": "cross-env BABEL_ENV=web:prod NODE_ENV=production webpack -p --config scripts/webpack.client.js",
+    "build:web:server": "cross-env BABEL_ENV=web:prod NODE_ENV=production webpack -p --config scripts/webpack.server.js",
     "build:web:node": "cross-env BABEL_ENV=web:prod NODE_ENV=production babel src -d dist ",
     "build:rn": "yarn build:rn:android",
     "build:rn:bundle": "yarn build:rn:bundle:android",
@@ -68,6 +67,7 @@
     "babel-plugin-minify-simplify": "^0.4.3",
     "babel-plugin-react": "^1.0.0",
     "babel-plugin-react-native-web": "^0.7.3",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-minify-booleans": "^6.9.4",
     "babel-plugin-transform-node-env-inline": "^0.4.3",
@@ -100,6 +100,7 @@
     "webpack-flush-chunks": "^1.2.3",
     "webpack-hot-middleware": "^2.22.2",
     "webpack-hot-server-middleware": "^0.5.0",
+    "webpack-node-externals": "^1.7.2",
     "webpack-visualizer-plugin": "^0.1.11",
     "write-file-webpack-plugin": "^4.3.2"
   }

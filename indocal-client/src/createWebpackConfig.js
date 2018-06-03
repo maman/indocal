@@ -36,11 +36,8 @@ function generateOutputConfig(isServer: boolean, isProd: boolean) {
   outputMap.filename = nameTemplate;
   if (isServer) {
     outputMap.path = resolve('dist/server');
+    outputMap.libraryTarget = 'commonjs2';
   } else {
-    outputMap.publicPath = '/assets/';
-    outputMap.path = resolve('dist/client');
-  }
-  if (!isServer) {
     if (isProd) {
       nameTemplate = '[name].[chunkhash].js';
       outputMap.filename = nameTemplate;
@@ -48,8 +45,8 @@ function generateOutputConfig(isServer: boolean, isProd: boolean) {
     } else {
       outputMap.chunkFilename = nameTemplate;
     }
-  } else {
-    outputMap.libraryTarget = 'commonjs2';
+    outputMap.publicPath = '/assets/';
+    outputMap.path = resolve('dist/client');
   }
   return outputMap;
 }

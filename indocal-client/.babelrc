@@ -1,13 +1,19 @@
 {
-  "presets": ["flow", "react-native"],
+  "presets": ["flow"],
   "plugins": ["transform-class-properties", "transform-object-rest-spread"],
   "env": {
+    "development": {
+      "presets": ["react-native"]
+    },
+    "production": {
+      "presets": ["react-native"]
+    },
     "web:dev": {
       "plugins": [
-        "react-hot-loader/babel",
+        "syntax-dynamic-import",
         "universal-import",
+        "react-hot-loader/babel",
         "react-native-web",
-        "transform-minify-booleans",
         "transform-node-env-inline",
         "transform-react-jsx-source",
         "transform-react-jsx-self"
@@ -21,14 +27,17 @@
               "browsers": ["last 2 versions", "safari >= 7"]
             }
           }
-        ]
+        ],
+        "react"
       ]
     },
     "web:prod": {
       "plugins": [
+        "syntax-dynamic-import",
         "universal-import",
         "react-native-web",
         "transform-react-display-name",
+        "transform-minify-booleans",
         "transform-node-env-inline",
         "minify-simplify",
         [
@@ -47,7 +56,8 @@
               "browsers": ["last 2 versions", "safari >= 7"]
             }
           }
-        ]
+        ],
+        "react"
       ]
     }
   }

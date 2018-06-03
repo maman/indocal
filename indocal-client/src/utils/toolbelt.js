@@ -14,9 +14,7 @@ export function webpackExternals(
     .readdirSync(nodeModulesFolder)
     .filter(
       module =>
-        !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/.test(
-          module
-        )
+        !/\.bin|react-universal-component|webpack-flush-chunks/.test(module)
     )
     .reduce((curr, module) => {
       curr[module] = `commonjs ${module}`;
